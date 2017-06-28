@@ -7,8 +7,10 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
+    var board = this.emptyBoard();
+    this.addFlower(board);
     this.state = {
-      board: this.emptyBoard(),
+      board: board,
       automatic: false
     }
   }
@@ -23,6 +25,14 @@ class App extends Component {
       ret.push(row);
     }
     return ret;
+  }
+
+  addFlower(board) {
+    board[4][5] = true;
+    board[5][4] = true;
+    board[5][5] = true;
+    board[5][6] = true;
+    board[6][5] = true;
   }
 
   render() {
