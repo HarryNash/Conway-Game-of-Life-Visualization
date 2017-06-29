@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import Board from './Board';
 import crankBoard from '../logic/crankBoard';
 import {BOARDWIDTH, BOARDHEIGHT} from './Board';
+import cellFuture from '../logic/cellFuture.js';
 import './App.css';
 
 class App extends Component {
@@ -15,6 +16,43 @@ class App extends Component {
       boardPost: crankBoard(boardPre),
       automatic: false
     }
+  }
+
+  tick() {
+    this.setState((prevState) => ({
+      boardPre: this.shiftBoard(prevState.boardPost),
+      boardPost: crankBoard(this.shiftBoard(prevState.boardPost))
+    }));
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  shiftBoard(boardPost) {
+    var boardPre = boardPost.slice();
+    for (var i = 0; i < BOARDHEIGHT; i++) {
+      for (var j = 0; j < BOARDWIDTH; j++) {
+        switch(boardPre[i][j]) {
+          case cellFuture.UNDERPOPDEATH:
+          case cellFuture.OVERPOPDEATH:
+          case cellFuture.STAYDEAD:
+            boardPre[i][j] = false;
+            break;
+          case cellFuture.SURVIVE:
+          case cellFuture.BIRTH:
+            boardPre[i][j] = true;
+            break;
+          deafult:
+            break;
+        }
+      }
+    }
+    return boardPre;
   }
 
   emptyBoard() {

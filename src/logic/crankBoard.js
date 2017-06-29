@@ -35,7 +35,11 @@ function crankCell(i, j, boardPre) {
     return cellFuture.BIRTH;
   }
 
-  return cellFuture.SURVIVE;
+  if (boardPre[i][j]) {
+    return cellFuture.SURVIVE;
+  }
+
+  return cellFuture.STAYDEAD;
 }
 
 function addNeighbour(neighbours, p1, p2, boardPre) {
