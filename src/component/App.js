@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import Board from './Board';
+import crankBoard from '../logic/crankBoard';
 import {BOARDWIDTH, BOARDHEIGHT} from './Board';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    var board = this.emptyBoard();
-    this.addFlower(board);
+    var boardPre = this.emptyBoard();
+    this.addFlower(boardPre);
     this.state = {
-      board: board,
+      boardPre: boardPre,
+      boardPost: crankBoard(boardPre),
       automatic: false
     }
   }
 
   emptyBoard() {
-    var ret = [];
+    var emptyBoard = [];
+    var emptyRow = new Array(BOARDWIDTH);
+    emptyRow.fill(false);
     for (var i = 0; i < BOARDHEIGHT; i++) {
-      var row = [];
-      for (var j = 0; j < BOARDWIDTH; j++) {
-        row.push(false);
-      }
-      ret.push(row);
+      emptyBoard.push(emptyRow.slice());
     }
-    return ret;
+    return emptyBoard;
   }
 
   addFlower(board) {
@@ -43,7 +43,7 @@ class App extends Component {
           <h2>Conway's Game of Life Tutorial</h2>
         </div>
         <br></br>
-        <Board board={this.state.board}/>
+        <Board boardPre={this.state.boardPre} boardPost={this.state.boardPost}/>
       </div>
     );
   }

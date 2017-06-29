@@ -4,8 +4,11 @@ const BOARDWIDTH = 20;
 const BOARDHEIGHT = 10;
 
 class Board extends Component {
-	renderSquare(alive) {
-		return <button className="square"> {alive ? 'O' : 'X'} </button>;
+	renderSquare(isAlive, future) {
+		var str = isAlive ? 'O' : 'X';
+		str = str.concat(' ');
+		str = str.concat(future);
+		return <button className="square"> {str} </button>;
 	}
 
 	render() {
@@ -13,7 +16,7 @@ class Board extends Component {
 		for (var i = 0; i < BOARDHEIGHT; i++) {
 			var row = [];
 			for (var j = 0; j < BOARDWIDTH; j++) {
-				row.push(this.renderSquare(this.props.board[i][j]));
+				row.push(this.renderSquare(this.props.boardPre[i][j], this.props.boardPost[i][j]));
 			}
 			board[i] = <div> {row} </div>;
 		}
