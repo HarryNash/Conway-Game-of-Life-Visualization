@@ -47,7 +47,7 @@ class App extends Component {
           case cellFuture.BIRTH:
             boardPre[i][j] = true;
             break;
-          deafult:
+          default:
             break;
         }
       }
