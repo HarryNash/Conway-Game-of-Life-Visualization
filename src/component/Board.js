@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Square from './Square';
 
 const BOARDWIDTH = 20;
-const BOARDHEIGHT = 10;
+const BOARDHEIGHT = 15;
 
 class Board extends Component {
 	render() {
