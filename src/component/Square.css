@@ -1,0 +1,9 @@
+.square {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-left: 3px;
+  -webkit-transition-duration: 0.4s;
+  margin-right: 3px;
+  height: 32px;
+  width: 32px;
+}

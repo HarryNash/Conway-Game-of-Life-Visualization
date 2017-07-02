@@ -23,11 +23,11 @@ function crankCell(i, j, boardPre) {
     }
   }
 
-  if (neighbours.length < 2) {
+  if (neighbours.length < 2 && boardPre[i][j]) {
     return cellFuture.UNDERPOPDEATH;
   }
 
-  if (neighbours.length > 3) {
+  if (neighbours.length > 3 && boardPre[i][j]) {
     return cellFuture.OVERPOPDEATH;
   }
 
