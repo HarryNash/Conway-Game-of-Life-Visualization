@@ -3,13 +3,13 @@ import clone2d from './clone2d';
 import cellFuture from './cellFuture.js';
 
 export default function crankBoard(boardPre) {
-    var boardPost = clone2d(boardPre);
-    for (var i = 0; i < BOARDHEIGHT; i++) {
-      for (var j = 0; j < BOARDWIDTH; j++) {
-        boardPost[i][j] = crankCell(i, j, boardPre);
-      }
+  var boardPost = clone2d(boardPre);
+  for (var i = 0; i < BOARDHEIGHT; i++) {
+    for (var j = 0; j < BOARDWIDTH; j++) {
+      boardPost[i][j] = crankCell(i, j, boardPre);
     }
-    return boardPost;
+  }
+  return boardPost;
   }
 
 function crankCell(i, j, boardPre) {
