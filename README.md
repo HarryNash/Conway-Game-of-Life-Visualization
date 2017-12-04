@@ -1,5 +1,9 @@
 # Conway-Game-of-Life-Visualization
 
+### Try It Out
+https://harrynash.github.io/Conway-Game-of-Life-Visualization/
+
+
 ### Features
   - Click on squares to set them as alive or dead.
   - Mouse over squares to see their future.
