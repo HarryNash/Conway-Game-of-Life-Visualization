@@ -1,7 +1,7 @@
 # Conway-Game-of-Life-Visualization
 
 ### Try It Out
-https://harrynash.github.io/Conway-Game-of-Life-Visualization/
+https://harrynash.github.io/conway-game-of-life-visualization/
 
 
 ### Features
